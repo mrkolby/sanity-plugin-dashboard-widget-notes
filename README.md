@@ -20,3 +20,13 @@ export default {
   ]
 }
 ```
+
+## Local development
+
+1. Fork/clone this repo
+2. Install dependencies (`yarn` or `npm install`)
+3. Link for local development (`yarn link` or `npm link`)
+4. Run build to compile your changes (`yarn build` or `npm run build`)
+5. Link in a local studio folder (`yarn link "sanity-plugin-dashboard-widget-notes"` or `npm link sanity-plugin-dashboard-widget-notes`)
+6. Add `sanity-dashboard-widget-notes` to the plugin array in `sanity.json`
+7. Add `{name: 'notes'}` to your `dashboardConfig.js`
