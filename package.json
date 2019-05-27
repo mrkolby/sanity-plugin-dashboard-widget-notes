@@ -16,7 +16,16 @@
   "keywords": [
     "sanity-plugin-dashboard-widget"
   ],
-  "author": "",
+  "contributors": [
+    {
+      "name": "Magnus Kolstad",
+      "email": "mrkolby@gmail.com"
+    },
+    {
+      "name": "Knut Melvær",
+      "email": "knut.melvaer@gmail.com"
+    }
+  ],
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/mrkolby/sanity-plugin-dashboard-widget-notes/issues"
