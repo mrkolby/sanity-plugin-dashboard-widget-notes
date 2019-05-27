@@ -112,7 +112,9 @@ class Notes extends Component {
           </h2>
         </header>
         {error ? (
-          <p>Could not load dashboard notes</p>
+          <div className={styles.content}>
+            <code>Could not load dashboard notes ...</code>
+          </div>
         ) : (
           <Fragment>
             <div className={styles.content}>

@@ -32,6 +32,7 @@
   composes: content from 'part:@sanity/dashboard/widget-styles';
   border-top: 1px solid var(--hairline-color);
   position: relative;
+  padding: var(--medium-padding);
 }
 
 .textarea {
@@ -42,9 +43,9 @@
   height: 100%;
   color: #36393d;
   font-weight: 300;
-  padding: var(--medium-padding);
   border: none;
   resize: none;
+  padding: 0;
 }
 
 .textarea:focus {
