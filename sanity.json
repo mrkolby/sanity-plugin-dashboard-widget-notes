@@ -1,4 +1,8 @@
 {
+  "paths": {
+    "source": "./src",
+    "compiled": "./lib"
+  },
   "parts": [
     {
       "name": "part:@sanity/dashboard/widget/dashboard-notes",
