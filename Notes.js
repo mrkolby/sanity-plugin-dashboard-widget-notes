@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import Icon from 'react-icons/lib/md/speaker-notes'
-import distanceInWordsToNow from 'date-fns/distance_in_words_to_now'
-import format from 'date-fns/format'
+import Icon from 'react-icons/lib/md/speaker-notes';
+import distanceInWordsToNow from 'date-fns/distance_in_words_to_now';
+import format from 'date-fns/format';
 
 import sanityClient from 'part:@sanity/base/client';
 import Button from 'part:@sanity/components/buttons/default';
@@ -75,7 +75,7 @@ class Notes extends Component {
 
   render() {
     const { error, updatedAt, notes, draftNotes, isCreatingDraft } = this.state;
-    const timestamp = format(updatedAt, 'MMM D, YYYY, h:mm A Z')
+    const timestamp = format(updatedAt, 'MMM D, YYYY, h:mm A Z');
 
     return (
       <div className={styles.container}>
