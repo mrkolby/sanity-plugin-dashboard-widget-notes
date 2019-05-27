@@ -1,6 +1,6 @@
 {
   "name": "sanity-plugin-dashboard-widget-notes",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "description": "Dashboard widget for the Sanity Content Studio which lets you write simple \"post-it\" notes.",
   "main": "index.js",
   "scripts": {
