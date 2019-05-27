@@ -83,7 +83,7 @@ class Notes extends Component {
           <h2 className={styles.title}>
             Notes
             <Icon className={styles.headerIcon} />
-            {updatedAt && <span title={timestamp}>{distanceInWordsToNow(updatedAt, { addSuffix: true })}</span>}
+            {updatedAt && <span title={timestamp}>Edited {distanceInWordsToNow(updatedAt, { addSuffix: true })}</span>}
           </h2>
         </header>
         {error ? (
