@@ -1,10 +1,13 @@
 import React, { Component, Fragment } from 'react';
-import {MdSpeakerNotes} from 'react-icons/md';
-import {format, distanceInWordsToNow} from 'date-fns';
+import { MdSpeakerNotes } from 'react-icons/md';
+import { format, distanceInWordsToNow } from 'date-fns';
 
+// eslint-disable-next-line import/no-unresolved
 import client from 'part:@sanity/base/client';
-import {PatchEvent, set, unset} from 'part:@sanity/form-builder/patch-event'
-import Button from 'part:@sanity/components/buttons/default';
+// eslint-disable-next-line import/no-unresolved
+// import { PatchEvent, set, unset } from 'part:@sanity/form-builder/patch-event';
+// eslint-disable-next-line import/no-unresolved
+import Button from 'part:@sanity/components/buttons/default'; // eslint-disable-line import/no-unresolved
 
 import styles from './Notes.css';
 
@@ -22,19 +25,34 @@ class Notes extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleDiscard = this.handleDiscard.bind(this);
   }
+
   componentWillMount() {
-    client.createIfNotExists({ _id: 'dashboard.note', _type: 'dashboardNote', notes: ''})
+    client.createIfNotExists({
+      _id: 'dashboard.note',
+      _type: 'dashboardNote',
+      notes: '',
+    });
   }
+
   componentDidMount() {
-    client.getDocument('dashboard.note').then(document => {
-      console.log(document)
-      const {_updatedAt, notes } = document
-      this.setState({_updatedAt, notes, draftNotes: notes })
-    })
-    this.subscription = client.listen(`*[_id == 'dashboard.note']`).subscribe(({result}) => {
-      const { _updatedAt, notes } = result
-      this.setState({ _updatedAt, notes, draftNotes: notes })
-    })
+    client.getDocument('dashboard.note').then(({ _updatedAt, notes }) => {
+      console.log(`updated at ${_updatedAt}`); // eslint-disable-line no-console
+      this.setState({
+        _updatedAt,
+        notes,
+        draftNotes: notes,
+      });
+    });
+
+    this.subscription = client.listen("*[_id == 'dashboard.note']").subscribe(({ result }) => {
+      const { _updatedAt, notes } = result;
+
+      this.setState({
+        _updatedAt,
+        notes,
+        draftNotes: notes,
+      });
+    });
   }
 
   handleChange(e) {
@@ -52,15 +70,15 @@ class Notes extends Component {
       .set({ notes: draftNotes })
       .commit()
       .then((updatedDocument) => {
-        console.log(updatedDocument)
+        console.log(updatedDocument); // eslint-disable-line no-console
         this.setState({
-          _updatedAt: updatedDocument._updatedAt,
+          _updatedAt: updatedDocument._updatedAt, // eslint-disable-line no-underscore-dangle
           notes: draftNotes,
           isCreatingDraft: false,
-        })
+        });
       })
       .catch((err) => {
-        console.error('Oh no, the update failed: ', err.message);
+        console.error('Oh no, the update failed: ', err.message); // eslint-disable-line no-console
       });
   }
 
@@ -70,12 +88,15 @@ class Notes extends Component {
     this.setState({
       draftNotes: notes,
       isCreatingDraft: false,
-    })
+    });
   }
 
   render() {
-    const { error, updatedAt, notes, draftNotes, isCreatingDraft } = this.state;
-    const timestamp = format(updatedAt, 'MMM D, YYYY, h:mm A Z');
+    const {
+      error, _updatedAt, draftNotes, isCreatingDraft,
+    } = this.state;
+
+    const timestamp = format(_updatedAt, 'MMM D, YYYY, h:mm A Z');
 
     return (
       <div className={styles.container}>
@@ -83,7 +104,11 @@ class Notes extends Component {
           <h2 className={styles.title}>
             Notes
             <MdSpeakerNotes className={styles.headerIcon} />
-            {updatedAt && <span title={timestamp}>Edited {distanceInWordsToNow(updatedAt, { addSuffix: true })}</span>}
+            {_updatedAt && (
+              <span title={timestamp}>
+                {`Edited ${distanceInWordsToNow(_updatedAt, { addSuffix: true })}`}
+              </span>
+            )}
           </h2>
         </header>
         {error ? (
