@@ -14,7 +14,8 @@
     "url": "git+https://github.com/mrkolby/sanity-plugin-dashboard-widget-notes.git"
   },
   "keywords": [
-    "sanity-plugin-dashboard-widget"
+    "sanity-plugin-dashboard-widget",
+    "sanity"
   ],
   "contributors": [
     {
