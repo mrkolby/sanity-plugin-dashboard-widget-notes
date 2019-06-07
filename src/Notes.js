@@ -33,7 +33,6 @@ class Notes extends Component {
 
   componentDidMount = () => {
     client.getDocument('dashboard.note').then(({ _updatedAt, notes }) => {
-      console.log(`updated at ${_updatedAt}`); // eslint-disable-line no-console
       this.setState({
         _updatedAt,
         notes,
@@ -41,6 +40,7 @@ class Notes extends Component {
       });
     });
 
+    this.unsubscribe();
     this.subscription = client.listen("*[_id == 'dashboard.note']").subscribe(({ result }) => {
       const { _updatedAt, notes } = result;
 
@@ -67,7 +67,6 @@ class Notes extends Component {
       .set({ notes: draftNotes })
       .commit()
       .then((updatedDocument) => {
-        console.log(updatedDocument); // eslint-disable-line no-console
         this.setState({
           _updatedAt: updatedDocument._updatedAt, // eslint-disable-line no-underscore-dangle
           notes: draftNotes,
@@ -86,6 +85,16 @@ class Notes extends Component {
       draftNotes: notes,
       isCreatingDraft: false,
     });
+  }
+
+  componentWillUnmount = () => {
+    this.unsubscribe();
+  }
+
+  unsubscribe() {
+    if (this.subscription) {
+      this.subscription.unsubscribe();
+    }
   }
 
   render() {
