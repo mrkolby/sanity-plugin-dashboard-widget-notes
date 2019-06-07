@@ -2,6 +2,8 @@
 
 Dashboard widget for the Sanity Content Studio which lets you write simple "post-it" notes.
 
+![sanity-plugin-dashboard-widget-notes](https://user-images.githubusercontent.com/300595/59102446-5fc7b280-892c-11e9-8059-22b2c09aaafa.png)
+
 ## Quick start
 
 Install the plugin in your Sanity Studio project folder:
