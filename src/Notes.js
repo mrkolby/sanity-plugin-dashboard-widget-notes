@@ -14,19 +14,16 @@ import styles from './Notes.css';
 class Notes extends Component {
   constructor(props) {
     super(props);
+
     this.state = {
       _updatedAt: null,
       notes: '',
       draftNotes: '',
       isCreatingDraft: false,
     };
-
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
-    this.handleDiscard = this.handleDiscard.bind(this);
   }
 
-  componentWillMount() {
+  componentWillMount = () => {
     client.createIfNotExists({
       _id: 'dashboard.note',
       _type: 'dashboardNote',
@@ -34,7 +31,7 @@ class Notes extends Component {
     });
   }
 
-  componentDidMount() {
+  componentDidMount = () => {
     client.getDocument('dashboard.note').then(({ _updatedAt, notes }) => {
       console.log(`updated at ${_updatedAt}`); // eslint-disable-line no-console
       this.setState({
@@ -55,14 +52,14 @@ class Notes extends Component {
     });
   }
 
-  handleChange(e) {
+  handleChange = (e) => {
     this.setState({
       draftNotes: e.target.value,
       isCreatingDraft: true,
     });
   }
 
-  handleSubmit() {
+  handleSubmit = () => {
     const { draftNotes } = this.state;
 
     client
@@ -82,7 +79,7 @@ class Notes extends Component {
       });
   }
 
-  handleDiscard() {
+  handleDiscard = () => {
     const { notes } = this.state;
 
     this.setState({
