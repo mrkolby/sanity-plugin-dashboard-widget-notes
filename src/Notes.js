@@ -130,6 +130,7 @@ class Notes extends Component {
                 name="notes"
                 value={draftNotes}
                 onChange={this.handleChange}
+                placeholder="..."
               />
             </div>
             {isCreatingDraft && (
