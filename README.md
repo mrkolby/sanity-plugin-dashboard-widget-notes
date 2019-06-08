@@ -23,6 +23,68 @@ export default {
 }
 ```
 
+## Options
+
+There are some options available.
+
+### `title` (string)
+
+Widget title. Defaults to `Notes`
+
+```js
+{
+  name: 'notes',
+  options: {
+    title: 'My notes'
+  }
+}
+```
+
+### `placeholder` (string)
+
+Placeholder text in the `<textarea>`. Defaults to `...`
+
+```js
+{
+  name: 'notes',
+  options: {
+    title: 'My notes',
+    placeholder: 'What is up?'
+  }
+}
+```
+
+### `backgroundColor` (string)
+
+Background color for the widget. Defaults to `#ffff88`
+
+```js
+{
+  name: 'notes',
+  options: {
+    title: 'My notes',
+    placeholder: 'What is up?',
+    backgroundColor: '#eee',
+  }
+}
+```
+
+### `color` (string)
+
+Text color for the widget.
+
+```js
+{
+  name: 'notes',
+  options: {
+    title: 'My notes',
+    placeholder: 'What is up?',
+    backgroundColor: '#eee',
+    color: 'red',
+  }
+}
+```
+
 ## Local development
 
 1. Fork/clone this repo
