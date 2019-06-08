@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { MdSpeakerNotes } from 'react-icons/md';
 import { format, distanceInWordsToNow } from 'date-fns';
@@ -127,7 +127,7 @@ class Notes extends Component {
             <code>Could not load dashboard notes ...</code>
           </div>
         ) : (
-          <Fragment>
+          <>
             <div className={styles.content}>
               <textarea
                 spellCheck="false"
@@ -149,7 +149,7 @@ class Notes extends Component {
                 </Button>
               </div>
             )}
-          </Fragment>
+          </>
         )}
       </div>
     );
