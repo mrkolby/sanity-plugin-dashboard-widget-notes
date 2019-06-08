@@ -31,7 +31,7 @@ There are some options available.
 
 Widget title. Defaults to `Notes`
 
-```js
+```javascript
 {
   name: 'notes',
   options: {
@@ -44,7 +44,7 @@ Widget title. Defaults to `Notes`
 
 Placeholder text in the `<textarea>`. Defaults to `...`
 
-```js
+```javascript
 {
   name: 'notes',
   options: {
@@ -58,7 +58,7 @@ Placeholder text in the `<textarea>`. Defaults to `...`
 
 Background color for the widget. Defaults to `#ffff88`
 
-```js
+```javascript
 {
   name: 'notes',
   options: {
@@ -73,7 +73,7 @@ Background color for the widget. Defaults to `#ffff88`
 
 Text color for the widget.
 
-```js
+```javascript
 {
   name: 'notes',
   options: {
