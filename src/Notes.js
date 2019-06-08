@@ -1,4 +1,5 @@
 import React, { Component, Fragment } from 'react';
+import PropTypes from 'prop-types';
 import { MdSpeakerNotes } from 'react-icons/md';
 import { format, distanceInWordsToNow } from 'date-fns';
 
@@ -102,13 +103,17 @@ class Notes extends Component {
       error, _updatedAt, draftNotes, isCreatingDraft,
     } = this.state;
 
+    const {
+      title, placeholder, backgroundColor,
+    } = this.props;
+
     const timestamp = format(_updatedAt, 'MMM D, YYYY, h:mm A Z');
 
     return (
-      <div className={styles.container}>
+      <div className={styles.container} style={{ backgroundColor }}>
         <header className={styles.header}>
           <h2 className={styles.title}>
-            Notes
+            {title}
             <MdSpeakerNotes className={styles.headerIcon} />
             {_updatedAt && (
               <span title={timestamp}>
@@ -130,7 +135,7 @@ class Notes extends Component {
                 name="notes"
                 value={draftNotes}
                 onChange={this.handleChange}
-                placeholder="..."
+                placeholder={placeholder}
               />
             </div>
             {isCreatingDraft && (
@@ -150,5 +155,17 @@ class Notes extends Component {
     );
   }
 }
+
+Notes.propTypes = {
+  title: PropTypes.string,
+  placeholder: PropTypes.string,
+  backgroundColor: PropTypes.string,
+};
+
+Notes.defaultProps = {
+  title: 'Notes',
+  placeholder: '...',
+  backgroundColor: '#ffff88',
+};
 
 export default Notes;

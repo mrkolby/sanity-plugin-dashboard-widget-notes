@@ -2,7 +2,6 @@
 
 .container {
   composes: container from "part:@sanity/dashboard/widget-styles";
-  background: #ffff88;
 }
 
 .header {
