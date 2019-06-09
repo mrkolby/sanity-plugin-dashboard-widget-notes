@@ -113,11 +113,11 @@ class Notes extends Component {
     } = this.state;
 
     const {
-      title, placeholder, backgroundColor,
+      title, placeholder, backgroundColor, color,
     } = this.props;
 
     const timestamp = format(_updatedAt, 'MMM D, YYYY, h:mm A Z');
-    const textColor = readableColor(backgroundColor);
+    const textColor = color || readableColor(backgroundColor);
 
     return (
       <div className={styles.container} style={{ backgroundColor }}>
@@ -184,12 +184,14 @@ Notes.propTypes = {
   title: PropTypes.string,
   placeholder: PropTypes.string,
   backgroundColor: PropTypes.string,
+  color: PropTypes.string,
 };
 
 Notes.defaultProps = {
   title: 'Notes',
   placeholder: '…',
   backgroundColor: '#ffff88',
+  color: null,
 };
 
 export default Notes;
