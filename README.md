@@ -2,6 +2,8 @@
 
 Dashboard widget for the Sanity Content Studio which lets you write simple "post-it" notes.
 
+Uses [polished.js](https://polished.js.org/) to find the best contrast depending on the luminosity of the given `backgroundColor`. Override with `color` in options.
+
 ![sanity-plugin-dashboard-widget-notes](https://user-images.githubusercontent.com/300595/59102446-5fc7b280-892c-11e9-8059-22b2c09aaafa.png)
 
 ## Quick start
@@ -56,7 +58,7 @@ Placeholder text in the `<textarea>`. Defaults to `...`
 
 ### `backgroundColor` (string)
 
-Background color for the widget. Defaults to `#ffff88`
+Background color for the widget. A black or white text color is set automatically depending on the luminosity. Defaults to `#ffff88`
 
 ```javascript
 {
@@ -71,7 +73,7 @@ Background color for the widget. Defaults to `#ffff88`
 
 ### `color` (string)
 
-Text color for the widget.
+Override text color for the widget.
 
 ```javascript
 {

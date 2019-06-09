@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { MdSpeakerNotes } from 'react-icons/md';
 import { format, distanceInWordsToNow } from 'date-fns';
+import { readableColor } from 'polished';
 
 // eslint-disable-next-line import/no-unresolved
 import client from 'part:@sanity/base/client';
@@ -108,13 +109,14 @@ class Notes extends Component {
     } = this.props;
 
     const timestamp = format(_updatedAt, 'MMM D, YYYY, h:mm A Z');
+    const textColor = readableColor(backgroundColor);
 
     return (
       <div className={styles.container} style={{ backgroundColor }}>
-        <header className={styles.header}>
+        <header className={styles.header} style={{ color: textColor }}>
           <h2 className={styles.title}>
             {title}
-            <MdSpeakerNotes className={styles.headerIcon} />
+            <MdSpeakerNotes className={styles.headerIcon} style={{ fill: textColor }} />
             {_updatedAt && (
               <span title={timestamp}>
                 {`Edited ${distanceInWordsToNow(_updatedAt, { addSuffix: true })}`}
@@ -136,6 +138,7 @@ class Notes extends Component {
                 value={draftNotes}
                 onChange={this.handleChange}
                 placeholder={placeholder}
+                style={{ color: textColor }}
               />
             </div>
             {isCreatingDraft && (
