@@ -154,17 +154,25 @@ class Notes extends Component {
                 style={{ color: textColor }}
               />
             </div>
-            {isCreatingDraft && (
-              <div className={styles.footer}>
-                <Button color="primary" kind="simple" onClick={this.handleSubmit}>
-                  Save notes
-                </Button>
+            <div className={styles.footer}>
+              <Button
+                color="primary"
+                kind="simple"
+                onClick={this.handleSubmit}
+                disabled={!isCreatingDraft}
+              >
+                Save notes
+              </Button>
 
-                <Button kind="simple" onClick={this.handleDiscard}>
-                  Discard changes
-                </Button>
-              </div>
-            )}
+              <Button
+                color="danger"
+                kind="simple"
+                onClick={this.handleDiscard}
+                disabled={!isCreatingDraft}
+              >
+                Discard changes
+              </Button>
+            </div>
           </>
         )}
       </div>
