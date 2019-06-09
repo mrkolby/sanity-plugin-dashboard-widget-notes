@@ -10,6 +10,7 @@ import client from 'part:@sanity/base/client';
 // import { PatchEvent, set, unset } from 'part:@sanity/form-builder/patch-event';
 // eslint-disable-next-line import/no-unresolved
 import Button from 'part:@sanity/components/buttons/default'; // eslint-disable-line import/no-unresolved
+import Spinner from 'part:@sanity/components/loading/spinner'; // eslint-disable-line import/no-unresolved
 
 import styles from './Notes.css';
 
@@ -22,6 +23,7 @@ class Notes extends Component {
       notes: '',
       draftNotes: '',
       isCreatingDraft: false,
+      isSaving: false,
     };
   }
 
@@ -63,6 +65,7 @@ class Notes extends Component {
 
   handleSubmit = () => {
     const { draftNotes } = this.state;
+    this.setState({ isSaving: true });
 
     client
       .patch('dashboard.note')
@@ -73,9 +76,14 @@ class Notes extends Component {
           _updatedAt: updatedDocument._updatedAt, // eslint-disable-line no-underscore-dangle
           notes: draftNotes,
           isCreatingDraft: false,
+          isSaving: false,
         });
       })
       .catch((err) => {
+        this.setState({
+          isSaving: false,
+        });
+
         console.error('Oh no, the update failed: ', err.message); // eslint-disable-line no-console
       });
   }
@@ -101,7 +109,7 @@ class Notes extends Component {
 
   render() {
     const {
-      error, _updatedAt, draftNotes, isCreatingDraft,
+      error, _updatedAt, draftNotes, isCreatingDraft, isSaving,
     } = this.state;
 
     const {
@@ -113,6 +121,11 @@ class Notes extends Component {
 
     return (
       <div className={styles.container} style={{ backgroundColor }}>
+        {isSaving && (
+          <div className={styles.spinnerContainer}>
+            <Spinner center message="Saving notes…" />
+          </div>
+        )}
         <header className={styles.header} style={{ color: textColor }}>
           <h2 className={styles.title}>
             {title}
