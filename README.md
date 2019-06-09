@@ -4,7 +4,7 @@ Dashboard widget for the Sanity Content Studio which lets you write simple "post
 
 Uses [polished.js](https://polished.js.org/) to find the best contrast depending on the luminosity of the given `backgroundColor`. Override with `color` in options.
 
-![sanity-plugin-dashboard-widget-notes](https://user-images.githubusercontent.com/300595/59102446-5fc7b280-892c-11e9-8059-22b2c09aaafa.png)
+![sanity-plugin-dashboard-widget-notes-2](https://user-images.githubusercontent.com/300595/59165189-4edb9480-8b18-11e9-99c1-7cdd1e5049d3.png)
 
 ## Quick start
 
