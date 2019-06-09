@@ -139,7 +139,7 @@ class Notes extends Component {
         </header>
         {error ? (
           <div className={styles.content}>
-            <code>Could not load dashboard notes ...</code>
+            <code>Could not load notes …</code>
           </div>
         ) : (
           <>
@@ -180,7 +180,7 @@ Notes.propTypes = {
 
 Notes.defaultProps = {
   title: 'Notes',
-  placeholder: '...',
+  placeholder: '…',
   backgroundColor: '#ffff88',
 };
 
