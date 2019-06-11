@@ -18,6 +18,8 @@
 .header {
   composes: header from "part:@sanity/dashboard/widget-styles";
   background: var(--checkerboard-color);
+  border-top-left-radius: var(--border-radius-base);
+  border-top-right-radius: var(--border-radius-base);
 }
 
 .header h2 span {

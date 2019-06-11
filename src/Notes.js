@@ -2,7 +2,9 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { MdSpeakerNotes } from 'react-icons/md';
 import { format, distanceInWordsToNow } from 'date-fns';
-import { readableColor } from 'polished';
+import {
+  readableColor, shade,
+} from 'polished';
 
 // eslint-disable-next-line import/no-unresolved
 import client from 'part:@sanity/base/client';
@@ -120,13 +122,19 @@ class Notes extends Component {
     const textColor = color || readableColor(backgroundColor, 'rgb(48, 48, 48)');
 
     return (
-      <div className={styles.container} style={{ backgroundColor }}>
+      <div className={styles.container}>
         {isSaving && (
           <div className={styles.spinnerContainer}>
             <Spinner center message="Saving notes…" />
           </div>
         )}
-        <header className={styles.header} style={{ color: textColor }}>
+        <header
+          className={styles.header}
+          style={{
+            backgroundColor: shade(0.05, backgroundColor),
+            color: textColor,
+          }}
+        >
           <h2 className={styles.title}>
             {title}
             <MdSpeakerNotes className={styles.headerIcon} style={{ fill: textColor }} />
@@ -138,12 +146,12 @@ class Notes extends Component {
           </h2>
         </header>
         {error ? (
-          <div className={styles.content}>
+          <div className={styles.content} style={{ backgroundColor }}>
             <code>Could not load notes …</code>
           </div>
         ) : (
           <>
-            <div className={styles.content}>
+            <div className={styles.content} style={{ backgroundColor }}>
               <textarea
                 spellCheck="false"
                 className={styles.textarea}
@@ -154,7 +162,10 @@ class Notes extends Component {
                 style={{ color: textColor }}
               />
             </div>
-            <div className={styles.footer}>
+            <div
+              className={styles.footer}
+              style={{ borderTopColor: shade(0.05, backgroundColor) }}
+            >
               <Button
                 bleed
                 color="primary"
