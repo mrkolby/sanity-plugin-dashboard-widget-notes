@@ -117,7 +117,7 @@ class Notes extends Component {
     } = this.props;
 
     const timestamp = format(_updatedAt, 'MMM D, YYYY, h:mm A Z');
-    const textColor = color || readableColor(backgroundColor);
+    const textColor = color || readableColor(backgroundColor, 'rgb(48, 48, 48)');
 
     return (
       <div className={styles.container} style={{ backgroundColor }}>
