@@ -156,6 +156,7 @@ class Notes extends Component {
             </div>
             <div className={styles.footer}>
               <Button
+                bleed
                 color="primary"
                 kind="simple"
                 onClick={this.handleSubmit}
@@ -165,6 +166,7 @@ class Notes extends Component {
               </Button>
 
               <Button
+                bleed
                 color="danger"
                 kind="simple"
                 onClick={this.handleDiscard}
