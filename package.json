@@ -1,7 +1,7 @@
 {
   "public": true,
   "name": "sanity-plugin-dashboard-widget-notes",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "Dashboard widget for the Sanity Content Studio which lets you write simple \"post-it\" notes.",
   "homepage": "https://github.com/mrkolby/sanity-plugin-dashboard-widget-notes#readme",
   "main": "lib/index.js",
