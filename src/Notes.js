@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { MdSpeakerNotes } from 'react-icons/md';
-import { format, distanceInWordsToNow } from 'date-fns';
-import {
-  readableColor, shade,
-} from 'polished';
+import parseISO from 'date-fns/parseISO';
+import formatDistance from 'date-fns/formatDistance';
+import format from 'date-fns/format';
+import { readableColor, shade } from 'polished';
 
 // eslint-disable-next-line import/no-unresolved
 import client from 'part:@sanity/base/client';
@@ -103,7 +103,7 @@ class Notes extends Component {
     this.unsubscribe();
   }
 
-  unsubscribe() {
+  unsubscribe = () => {
     if (this.subscription) {
       this.subscription.unsubscribe();
     }
@@ -118,7 +118,6 @@ class Notes extends Component {
       title, placeholder, backgroundColor, color,
     } = this.props;
 
-    const timestamp = format(_updatedAt, 'MMM D, YYYY, h:mm A Z');
     const textColor = color || readableColor(backgroundColor, 'rgb(48, 48, 48)');
 
     return (
@@ -139,8 +138,12 @@ class Notes extends Component {
             {title}
             <MdSpeakerNotes className={styles.headerIcon} style={{ fill: textColor }} />
             {_updatedAt && (
-              <span title={timestamp}>
-                {`Edited ${distanceInWordsToNow(_updatedAt, { addSuffix: true })}`}
+              <span title={format(parseISO(_updatedAt), 'yyyy-MM-dd\'T\'HH:mm:ss.SSSxxx')}>
+                {`Edited ${formatDistance(
+                  parseISO(_updatedAt),
+                  new Date(),
+                  { addSuffix: true },
+                )}`}
               </span>
             )}
           </h2>
