@@ -1,14 +1,8 @@
 {
-  "parser": "babel-eslint",
-  "plugins": [
-    "react"
-  ],
   "env": {
-    "browser": true,
-    "node": true
+    "node": true,
+    "browser": true
   },
-  "extends": "airbnb",
-  "rules": {
-    "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }]
-  }
+  "parser": "babel-eslint",
+  "extends": ["sanity", "sanity/react"]
 }

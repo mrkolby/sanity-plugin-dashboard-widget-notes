@@ -29,13 +29,13 @@ class Notes extends Component {
     };
   }
 
-  componentWillMount = () => {
+  UNSAFE_componentWillMount = () => {
     client.createIfNotExists({
       _id: 'dashboard.note',
       _type: 'dashboardNote',
       notes: '',
     });
-  }
+  };
 
   componentDidMount = () => {
     client.getDocument('dashboard.note').then(({ _updatedAt, notes }) => {
@@ -56,14 +56,14 @@ class Notes extends Component {
         draftNotes: notes,
       });
     });
-  }
+  };
 
   handleChange = (e) => {
     this.setState({
       draftNotes: e.target.value,
       isCreatingDraft: true,
     });
-  }
+  };
 
   handleSubmit = () => {
     const { draftNotes } = this.state;
@@ -88,7 +88,7 @@ class Notes extends Component {
 
         console.error('Oh no, the update failed: ', err.message); // eslint-disable-line no-console
       });
-  }
+  };
 
   handleDiscard = () => {
     const { notes } = this.state;
@@ -97,26 +97,22 @@ class Notes extends Component {
       draftNotes: notes,
       isCreatingDraft: false,
     });
-  }
+  };
 
   componentWillUnmount = () => {
     this.unsubscribe();
-  }
+  };
 
   unsubscribe = () => {
     if (this.subscription) {
       this.subscription.unsubscribe();
     }
-  }
+  };
 
   render() {
-    const {
-      error, _updatedAt, draftNotes, isCreatingDraft, isSaving,
-    } = this.state;
+    const { error, _updatedAt, draftNotes, isCreatingDraft, isSaving } = this.state;
 
-    const {
-      title, placeholder, backgroundColor, color,
-    } = this.props;
+    const { title, placeholder, backgroundColor, color } = this.props;
 
     const textColor = color || readableColor(backgroundColor, 'rgb(48, 48, 48)');
 
@@ -138,12 +134,8 @@ class Notes extends Component {
             {title}
             <MdSpeakerNotes className={styles.headerIcon} style={{ fill: textColor }} />
             {_updatedAt && (
-              <span title={format(parseISO(_updatedAt), 'yyyy-MM-dd\'T\'HH:mm:ss.SSSxxx')}>
-                {`Edited ${formatDistance(
-                  parseISO(_updatedAt),
-                  new Date(),
-                  { addSuffix: true },
-                )}`}
+              <span title={format(parseISO(_updatedAt), "yyyy-MM-dd'T'HH:mm:ss.SSSxxx")}>
+                {`Edited ${formatDistance(parseISO(_updatedAt), new Date(), { addSuffix: true })}`}
               </span>
             )}
           </h2>
@@ -165,10 +157,7 @@ class Notes extends Component {
                 style={{ color: textColor }}
               />
             </div>
-            <div
-              className={styles.footer}
-              style={{ borderTopColor: shade(0.05, backgroundColor) }}
-            >
+            <div className={styles.footer} style={{ borderTopColor: shade(0.05, backgroundColor) }}>
               <Button
                 bleed
                 color="primary"

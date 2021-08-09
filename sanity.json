@@ -5,7 +5,7 @@
   },
   "parts": [
     {
-      "name": "part:@sanity/dashboard/widget/notes",
+      "name": "part:dashboard-widget-notes/widget/notes",
       "implements": "part:@sanity/dashboard/widget",
       "path": "index.js"
     }
