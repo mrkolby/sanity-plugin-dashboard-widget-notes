@@ -27,7 +27,7 @@
       "email": "knut.melvaer@gmail.com"
     }
   ],
-  "license": "ISC",
+  "license": "MIT",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/mrkolby/sanity-plugin-dashboard-widget-notes.git"
