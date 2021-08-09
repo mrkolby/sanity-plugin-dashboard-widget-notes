@@ -43,7 +43,9 @@
     "eslint-config-sanity": "5.1.0",
     "eslint-plugin-react": "7.24.0"
   },
-  "react": "^17.0.0",
+  "peerDependencies": {
+    "react": "^17.0.0"
+  },
   "dependencies": {
     "date-fns": "^2.23.0",
     "prop-types": "^15.7.2",
